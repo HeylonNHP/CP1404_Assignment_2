@@ -1,4 +1,28 @@
 BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            size_hint_x: 0.2
+            orientation: 'vertical'
+            Button:
+                text: "List Items"
+            Button:
+                text: "Hire Items"
+            Button:
+                text: "Return Items"
+            Button:
+                text: "Confirm"
+            Button:
+                text: "Add New Item"
+        GridLayout:
+            cols: 2
+            ToggleButton:
+                text: 'test'
+            Button:
+                text: 'hello'
+            Button:
+                text: 'world'
     Label:
-        size_hint: 1,1
-        text: "Hello"
+        size_hint_y: 0.1
+        text: 'hi'
