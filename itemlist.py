@@ -30,3 +30,8 @@ class ItemList:
     def add_item(self, item=item.Item()):
         self.item_list.append(item)
 
+    def get_item_by_name(self,item_name):
+        for list_item in self.item_list:
+            if list_item.get_name() == item_name:
+                return list_item
+

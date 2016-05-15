@@ -5,18 +5,25 @@ BoxLayout:
         BoxLayout:
             size_hint_x: 0.2
             orientation: 'vertical'
-            Button:
+            ToggleButton:
                 text: "List Items"
-            Button:
+                id: list_items
+                on_press: app.handle_list_items()
+            ToggleButton:
                 text: "Hire Items"
-            Button:
+                id: hire_items
+            ToggleButton:
                 text: "Return Items"
+                id: return_items
             Button:
                 text: "Confirm"
-            Button:
+                id: confirm_items
+            ToggleButton:
                 text: "Add New Item"
+                id: add_items
         GridLayout:
             cols: 2
+            id: item_grid
             ToggleButton:
                 text: 'test'
             Button:
@@ -25,4 +32,4 @@ BoxLayout:
                 text: 'world'
     Label:
         size_hint_y: 0.1
-        text: 'hi'
+        text: app.status_text
