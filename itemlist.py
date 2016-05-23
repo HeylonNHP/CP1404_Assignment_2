@@ -12,7 +12,13 @@ class ItemList:
             self.add_item(current_item)
 
     def __str__(self):
-        return "{}".format('hello world')
+        returnstring = ""
+        for listitem in self.item_list:
+            returnstring += "{}, ".format(listitem.get_name())
+        if returnstring == "":
+            return "no items"
+        return returnstring[0:-2]
+
 
     def __len__(self):
         return len(self.item_list)
@@ -35,3 +41,7 @@ class ItemList:
             if list_item.get_name() == item_name:
                 return list_item
 
+    def set_item_by_name(self,item_name, item):
+        for i in range(0,len(self.item_list)):
+            if self.item_list[i].get_name() == item_name:
+                self.item_list[i] = item
