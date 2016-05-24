@@ -1,5 +1,6 @@
 BoxLayout:
     orientation: 'vertical'
+    id: root_boxlayout
     BoxLayout:
         orientation: 'horizontal'
         BoxLayout:
@@ -16,21 +17,50 @@ BoxLayout:
             ToggleButton:
                 text: "Return Items"
                 id: return_items
+                on_press: app.handle_return_items()
             Button:
                 text: "Confirm"
                 id: confirm_items
             ToggleButton:
                 text: "Add New Item"
                 id: add_items
+                on_press: app.handle_add_item()
         GridLayout:
             cols: 2
             id: item_grid
-            ToggleButton:
-                text: 'test'
-            Button:
-                text: 'hello'
-            Button:
-                text: 'world'
     Label:
         size_hint_y: 0.1
         text: app.status_text
+    Popup:
+        id: add_items_popup
+        size_hint: (0.8,0.8)
+        title: "Add Item"
+        on_parent:
+            if self.parent == root_boxlayout: self.parent.remove_widget(self)
+        # popup can be closed by clicking outside it - this must be handled
+        on_dismiss: app.test1()
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Item Name:'
+            TextInput:
+                id: new_item_name
+            Label:
+                text: 'Description:'
+            TextInput:
+                id: new_item_description
+            Label:
+                text: 'Price Per Day'
+            TextInput:
+                id: new_item_price
+            Button:
+                text: 'Save Item'
+                id: save_new_item
+                on_press: app.handle_popup_save_item()
+            Button:
+                text: 'Cancel'
+                id: cancel_popup
+                on_press: app.handle_popup_cancel()
+            Label:
+                text: app.popup_status_text
+                id: popup_status
